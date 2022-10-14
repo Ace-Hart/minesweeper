@@ -1,0 +1,54 @@
+# Temporary files
+*~
+
+# Compiled object files
+*.slo
+*.lo
+*.o
+
+# Compiled dynamic libraries
+*.so
+*.so.*
+*.dylib
+
+# Compiled static libraries
+*.lai
+*.la
+*.a
+
+# QtCreator .user files
+*.user
+*.user.*
+
+# Qt generated files
+*.moc
+moc_*
+*.jsc
+*.qmlc
+
+# Makefiles
+Makefile*
+
+# Merge files
+*.orig
+
+# Installed qml plugins
+imports/*
+
+# Build manifest
+manifest.json
+
+# Qml project configuration files
+*.qmlproject
+
+# Project files for VS Code
+.vscode
+
+# misc
+*.desktop
+*.autosave
+*.swp
+*.save
+
+#build dir
+build/*

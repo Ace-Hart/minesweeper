@@ -19,7 +19,11 @@ include_directories(
 )
 
 add_executable(${PROJECT_NAME}
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/mainwindow.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/mainwindow.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Cell.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/Minefield.cpp
 )
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Widgets)

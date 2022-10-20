@@ -1,10 +1,11 @@
-#include <iostream>
+#include "mainwindow.h"
 
 #include <QApplication>
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
 
-    std::cout<< "Hello World! Press any Ctrl+C to exit" << std::endl;
+    MainWindow mw;
+    mw.show();
     return a.exec();
 }

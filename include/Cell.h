@@ -3,6 +3,8 @@
 
 #include "ICell.h"
 
+#include "Common.h"
+
 class Cell final : public ICell
 {
 public:
@@ -12,12 +14,12 @@ public:
     bool hasBomb() const override;
     void setHasBomb(bool hasBomb) override;
 
-    uint8_t bombsAround() const override;
-    void setBombsAround(uint8_t bombs) override;
+    indexT bombsAround() const override;
+    void setBombsAround(indexT bombs) override;
 
 private:
     bool mHasBomb;
-    uint8_t mBombsAround;
+    indexT mBombsAround;
 };
 
 #endif // CELL_H

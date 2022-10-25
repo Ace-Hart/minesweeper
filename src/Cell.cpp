@@ -2,7 +2,9 @@
 
 #include <QDebug>
 
-Cell::Cell(bool hasBomb) : mHasBomb{hasBomb} {
+Cell::Cell(bool hasBomb)
+    : mHasBomb{hasBomb},
+      mBombsAround{0} {
     //qDebug() << "Creating cell " << mHasBomb;
 }
 
@@ -18,10 +20,10 @@ void Cell::setHasBomb(bool hasBomb){
     mHasBomb = hasBomb;
 }
 
-uint8_t Cell::bombsAround() const {
+indexT Cell::bombsAround() const {
     return mBombsAround;
 }
 
-void Cell::setBombsAround(uint8_t bombs) {
+void Cell::setBombsAround(indexT bombs) {
     mBombsAround = bombs;
 }

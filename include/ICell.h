@@ -1,7 +1,7 @@
 #ifndef ICELL_H
 #define ICELL_H
 
-#include <cstdint>
+#include "Common.h"
 
 class ICell {
 public:
@@ -10,8 +10,8 @@ public:
     virtual bool hasBomb() const = 0;
     virtual void setHasBomb(bool hasBomb) = 0;
 
-    virtual uint8_t bombsAround() const = 0;
-    virtual void setBombsAround(uint8_t bombs) = 0;
+    virtual indexT bombsAround() const = 0;
+    virtual void setBombsAround(indexT bombs) = 0;
 };
 
 #endif // ICELL_H

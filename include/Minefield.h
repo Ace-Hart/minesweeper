@@ -10,20 +10,22 @@
 class Minefield final : public IMinefield
 {
 public:
-    Minefield(uint8_t rows, uint8_t columns, uint8_t bombs);
+    Minefield(indexT rows, indexT columns, indexT bombs);
     ~Minefield();
 
-    void setDimensions(uint8_t rows, uint8_t columns) override;
-    void setBombs(uint8_t bombs) override;
-    std::shared_ptr<ICell> getCell(uint8_t column, uint8_t row) override;
+    void setDimensions(indexT rows, indexT columns) override;
+    void setBombs(indexT bombs) override;
+    std::shared_ptr<ICell> getCell(indexT column, indexT row) override;
 
 private:
     void fillMinefield();
     void printMinefield();
+    void checkBombsAround(indexT row, indexT column);
+    void markCells();
 
-    uint8_t mRows;
-    uint8_t mColumns;
-    uint8_t mBombs;
+    indexT mRows;
+    indexT mColumns;
+    indexT mBombs;
 
     std::vector<std::shared_ptr<ICell>> mField;
 };

@@ -2,8 +2,8 @@
 
 #include <QDebug>
 
-Cell::Cell(uint8_t bombs) : mBombsAround{bombs} {
-    //qDebug() << "Creating cell " << mBombsAround;
+Cell::Cell(bool hasBomb) : mHasBomb{hasBomb} {
+    //qDebug() << "Creating cell " << mHasBomb;
 }
 
 Cell::~Cell() {

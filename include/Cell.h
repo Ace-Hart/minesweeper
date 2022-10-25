@@ -6,14 +6,14 @@
 class Cell final : public ICell
 {
 public:
-    Cell(uint8_t bombs);
+    Cell(bool hasBomb);
     ~Cell();// = default;
 
-    bool hasBomb() const;
-    void setHasBomb(bool hasBomb);
+    bool hasBomb() const override;
+    void setHasBomb(bool hasBomb) override;
 
-    uint8_t bombsAround() const;
-    void setBombsAround(uint8_t bombs);
+    uint8_t bombsAround() const override;
+    void setBombsAround(uint8_t bombs) override;
 
 private:
     bool mHasBomb;

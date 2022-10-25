@@ -19,6 +19,7 @@ public:
 
 private:
     void fillMinefield();
+    void printMinefield();
 
     uint8_t mRows;
     uint8_t mColumns;

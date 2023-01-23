@@ -1,6 +1,7 @@
 #include "Minefield.h"
 
 #include <QDebug>
+#include <QRandomGenerator>
 
 #include "Cell.h"
 
@@ -9,6 +10,7 @@ Minefield::Minefield(indexT rows, indexT columns, indexT bombs)
       mColumns{columns},
       mBombs{bombs} {
     qDebug() << "Creating field, rows:" << mRows << ", columns:" << mColumns << ", bombs:" << mBombs;
+    initMinefield();
     fillMinefield();
     markCells();
     printMinefield();
@@ -30,6 +32,29 @@ void Minefield::setBombs(indexT bombs) {
 
 std::shared_ptr<ICell> Minefield::getCell(indexT row, indexT column) {
     return mField.at(mRows * row + column);
+}
+
+void Minefield::initMinefield() {
+    const auto cells{mRows * mColumns};
+    for (auto i = 0; i < cells; i++) {
+        mField.push_back(std::make_shared<Cell>(false));
+    }
+}
+
+void Minefield::fillMinefield() {
+    const auto cells{mColumns * mRows};
+    indexT bombsSet{0};
+
+    while (bombsSet < mBombs) {
+        const auto hasBomb{QRandomGenerator::global()->bounded(2)};
+        auto cell{mField.at(QRandomGenerator::global()->bounded(cells))};
+        if (hasBomb && !cell->hasBomb()) {
+            cell->setHasBomb(true);
+            bombsSet++;
+        }
+    }
+
+    qDebug() <<"bombs set:" << bombsSet << "in" << cells << "cells";
 }
 
 void Minefield::printMinefield() {
@@ -127,23 +152,5 @@ void Minefield::markCells() {
     }
 }
 
-void Minefield::fillMinefield() {
-    indexT bombs{0};
-    indexT cells{0};
-    const auto step{(mColumns * mRows) / mBombs};
-    qDebug() << "step = " << step;
-    for (auto i = 0; i < mRows; i++) {
-        for (auto j = 0; j < mColumns; j++) {
-            //TODO: replace with actual random
-            cells++;
-            if ((cells % step) == 0) {
-                mField.push_back(std::make_shared<Cell>(true));
-                bombs++;
-            } else {
-                mField.push_back(std::make_shared<Cell>(false));
-            }
-        }
-    }
-    qDebug() <<"bombs set:" << bombs << "in" << cells << "cells";
-}
+
 

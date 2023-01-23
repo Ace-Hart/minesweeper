@@ -18,6 +18,7 @@ public:
     std::shared_ptr<ICell> getCell(indexT column, indexT row) override;
 
 private:
+    void initMinefield();
     void fillMinefield();
     void printMinefield();
     void checkBombsAround(indexT row, indexT column);
